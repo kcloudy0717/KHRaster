@@ -23,23 +23,23 @@ All of the required libraries should be included in the repository, the only thi
 
 # Progress
 
-## 01 BLIT
+## 1: BLIT
 
 ![0](/Progress/01_BLIT.png?raw=true "01_BLIT")
 
-## 02 Lines
+## 2: Lines
 
 ![1](/Progress/02_Lines.png?raw=true "02_Lines")
 
-## 03 Triangle
+## 3: Triangle
 
 ![2](/Progress/03_Triangle.png?raw=true "03_Triangle")
 
-## 04 Cube
+## 4: Cube
 
 ![3](/Progress/04_Cube.png?raw=true "04_Cube")
 
-## 05 Textured Cube
+## 5: Textured Cube
 
 ### Colored cube no depth
 
@@ -53,6 +53,6 @@ All of the required libraries should be included in the repository, the only thi
 
 ![6](/Progress/05_3_TexturedCube.png?raw=true "05_3_TexturedCube")
 
-## 06 Lighting
+## 6: Lighting
 
 ![7](/Progress/06_Lighting.png?raw=true "06_Lighting")
