@@ -1,6 +1,6 @@
 # KHRaster
 
-This is a rasterizer written during my student time at my university.
+This is a rasterizer written during my time as a student.
 
 # Features
 
