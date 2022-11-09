@@ -22,7 +22,7 @@ float RandomNumber(float min, float max)
 Vertex starField[3000];
 Vertex vertices[1457];
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	const UINT64 Width = 500;
 	const UINT64 Height = 500;
@@ -64,10 +64,10 @@ int main(int argc, char** argv)
 		vertices[i].normal.w = 0.0f;
 	}
 	ConstantBuffer.light.color = 0xf0c0c0ff;
-	ConstantBuffer.light.position = { 0.0f, 0.0f, 0.0f, 1.0f };
-	ConstantBuffer.light.normal = Vector_Normalize({ 0.577f, 0.577f, -0.577f, 0.0f });
+	ConstantBuffer.light.position = {0.0f, 0.0f, 0.0f, 1.0f};
+	ConstantBuffer.light.normal = Vector_Normalize({0.577f, 0.577f, -0.577f, 0.0f});
 	ConstantBuffer.pointLight.color = 0x00ffffff;
-	ConstantBuffer.pointLight.position = { -1.0f, 0.5f, 1.0f, 1.0f };
+	ConstantBuffer.pointLight.position = {-1.0f, 0.5f, 1.0f, 1.0f};
 
 	XTime XTime;
 	XTime.Restart();
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 			Rasterizer.VS = VertexShader;
 
 			ConstantBuffer.World = Matrix_Identity();
-			for (auto& i : starField)
+			for (auto &i : starField)
 			{
 				Rasterizer.DrawPoint(i);
 			}

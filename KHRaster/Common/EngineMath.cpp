@@ -331,7 +331,7 @@ Vec4 Vector_Average(Vec4 v, Vec4 w)
 float Vector_AngleBetween(Vec4 v, Vec4 w)
 {
 	float angle = acosf(Vector_Dot(v, w) / ((Vector_Length(v) * Vector_Length(w))));
-	return 	Radians_To_Degrees(angle);
+	return Radians_To_Degrees(angle);
 }
 
 // Get the distance one Vec4 points in the direction of another
@@ -383,7 +383,6 @@ Vec4 Vector_Project(Vec4 v, Vec4 w)
 // Functions Lab  #2
 ///////////////////////////////////////////////////////////////////////
 
-
 // Get the reflection of v across w
 //
 // IN:		v		The vector to reflect
@@ -420,10 +419,10 @@ Matrix4x4 Matrix_Zero(void)
 // RETURN: A 4x4 Identity matrix
 Matrix4x4 Matrix_Identity(void)
 {
-	Matrix4x4 identityMatrix = { 1.0f, 0.0f, 0.0f, 0.0f,
-							   0.0f, 1.0f, 0.0f, 0.0f,
-							   0.0f, 0.0f, 1.0f, 0.0f,
-							   0.0f, 0.0f, 0.0f, 1.0f };
+	Matrix4x4 identityMatrix = {1.0f, 0.0f, 0.0f, 0.0f,
+								0.0f, 1.0f, 0.0f, 0.0f,
+								0.0f, 0.0f, 1.0f, 0.0f,
+								0.0f, 0.0f, 0.0f, 1.0f};
 	return identityMatrix;
 }
 
@@ -436,10 +435,10 @@ Matrix4x4 Matrix_Identity(void)
 // RETURN:	The translation matrix
 Matrix4x4 Matrix_Create_Translation(float x, float y, float z)
 {
-	Matrix4x4 translationMatrix = { 1.0f, 0.0f, 0.0f, 0.0f,
-								  0.0f, 1.0f, 0.0f, 0.0f,
-								  0.0f, 0.0f, 1.0f, 0.0f,
-								  x, y, z, 1.0f };
+	Matrix4x4 translationMatrix = {1.0f, 0.0f, 0.0f, 0.0f,
+								   0.0f, 1.0f, 0.0f, 0.0f,
+								   0.0f, 0.0f, 1.0f, 0.0f,
+								   x, y, z, 1.0f};
 	return translationMatrix;
 }
 
@@ -452,10 +451,10 @@ Matrix4x4 Matrix_Create_Translation(float x, float y, float z)
 // RETURN:	The scale matrix
 Matrix4x4 Matrix_Create_Scale(float x, float y, float z)
 {
-	Matrix4x4 scaleMatrix = { x, 0.0f, 0.0f, 0.0f,
-							0.0f, y, 0.0f, 0.0f,
-							0.0f, 0.0f, z, 0.0f,
-							0.0f, 0.0f, 0.0f, 1.0f };
+	Matrix4x4 scaleMatrix = {x, 0.0f, 0.0f, 0.0f,
+							 0.0f, y, 0.0f, 0.0f,
+							 0.0f, 0.0f, z, 0.0f,
+							 0.0f, 0.0f, 0.0f, 1.0f};
 	return scaleMatrix;
 }
 
@@ -467,10 +466,10 @@ Matrix4x4 Matrix_Create_Scale(float x, float y, float z)
 Matrix4x4 Matrix_Create_Rotation_X(float Deg)
 {
 	Deg = Degrees_To_Radians(Deg);
-	Matrix4x4 RxMatrix = { 1.0f,    0.0f,         0.0f,       0.0f,
-						 0.0f,   cosf(Deg),   -sinf(Deg),   0.0f,
-						 0.0f,   sinf(Deg),    cosf(Deg),   0.0f,
-						 0.0f,    0.0f,         0.0f,       1.0f };
+	Matrix4x4 RxMatrix = {1.0f, 0.0f, 0.0f, 0.0f,
+						  0.0f, cosf(Deg), -sinf(Deg), 0.0f,
+						  0.0f, sinf(Deg), cosf(Deg), 0.0f,
+						  0.0f, 0.0f, 0.0f, 1.0f};
 	return RxMatrix;
 }
 
@@ -482,10 +481,10 @@ Matrix4x4 Matrix_Create_Rotation_X(float Deg)
 Matrix4x4 Matrix_Create_Rotation_Y(float Deg)
 {
 	Deg = Degrees_To_Radians(Deg);
-	Matrix4x4 RyMatrix = { cosf(Deg),   0.0f,   sinf(Deg),   0.0f,
-						  0.0f,       1.0f,    0.0f,       0.0f,
-						-sinf(Deg),   0.0f,   cosf(Deg),   0.0f,
-						  0.0f,       0.0f,    0.0f,       1.0f };
+	Matrix4x4 RyMatrix = {cosf(Deg), 0.0f, sinf(Deg), 0.0f,
+						  0.0f, 1.0f, 0.0f, 0.0f,
+						  -sinf(Deg), 0.0f, cosf(Deg), 0.0f,
+						  0.0f, 0.0f, 0.0f, 1.0f};
 	return RyMatrix;
 }
 
@@ -497,10 +496,10 @@ Matrix4x4 Matrix_Create_Rotation_Y(float Deg)
 Matrix4x4 Matrix_Create_Rotation_Z(float Deg)
 {
 	Deg = Degrees_To_Radians(Deg);
-	Matrix4x4 RzMatrix = { cosf(Deg),  -sinf(Deg),   0.0f,   0.0f,
-						 sinf(Deg),   cosf(Deg),   0.0f,   0.0f,
-						  0.0f,        0.0f,       1.0f,   0.0f,
-						  0.0f,        0.0f,       0.0f,   1.0f };
+	Matrix4x4 RzMatrix = {cosf(Deg), -sinf(Deg), 0.0f, 0.0f,
+						  sinf(Deg), cosf(Deg), 0.0f, 0.0f,
+						  0.0f, 0.0f, 1.0f, 0.0f,
+						  0.0f, 0.0f, 0.0f, 1.0f};
 	return RzMatrix;
 }
 
@@ -574,10 +573,10 @@ Matrix4x4 Matrix_Negate(Matrix4x4 m)
 // RETURN:	The transpose of m
 Matrix4x4 Matrix_Transpose(Matrix4x4 m)
 {
-	Matrix4x4 transposeMatrix = { m._e11, m._e21, m._e31, m._e41,
-								m._e12, m._e22, m._e32, m._e42,
-								m._e13, m._e23, m._e33, m._e43,
-								m._e14, m._e24, m._e34, m._e44 };
+	Matrix4x4 transposeMatrix = {m._e11, m._e21, m._e31, m._e41,
+								 m._e12, m._e22, m._e32, m._e42,
+								 m._e13, m._e23, m._e33, m._e43,
+								 m._e14, m._e24, m._e34, m._e44};
 	return transposeMatrix;
 }
 
@@ -632,10 +631,10 @@ Vec4 Vector_Matrix_Multiply(Vec4 v, Matrix4x4 m)
 // RETURN:	[m]*[n]
 Matrix4x4 Matrix_Matrix_Multiply(Matrix4x4 m, Matrix4x4 n)
 {
-	Matrix4x4 matrixMultiply = { (m._e11 * n._e11) + (m._e12 * n._e21) + (m._e13 * n._e31) + (m._e14 * n._e41) , (m._e11 * n._e12) + (m._e12 * n._e22) + (m._e13 * n._e32) + (m._e14 * n._e42) , (m._e11 * n._e13) + (m._e12 * n._e23) + (m._e13 * n._e33) + (m._e14 * n._e43) , (m._e11 * n._e14) + (m._e12 * n._e24) + (m._e13 * n._e34) + (m._e14 * n._e44),
-							   (m._e21 * n._e11) + (m._e22 * n._e21) + (m._e23 * n._e31) + (m._e24 * n._e41) , (m._e21 * n._e12) + (m._e22 * n._e22) + (m._e23 * n._e32) + (m._e24 * n._e42) , (m._e21 * n._e13) + (m._e22 * n._e23) + (m._e23 * n._e33) + (m._e24 * n._e43) , (m._e21 * n._e14) + (m._e22 * n._e24) + (m._e23 * n._e34) + (m._e24 * n._e44),
-							   (m._e31 * n._e11) + (m._e32 * n._e21) + (m._e33 * n._e31) + (m._e34 * n._e41) , (m._e31 * n._e12) + (m._e32 * n._e22) + (m._e33 * n._e32) + (m._e34 * n._e42) , (m._e31 * n._e13) + (m._e32 * n._e23) + (m._e33 * n._e33) + (m._e34 * n._e43) , (m._e31 * n._e14) + (m._e32 * n._e24) + (m._e33 * n._e34) + (m._e34 * n._e44),
-							   (m._e41 * n._e11) + (m._e42 * n._e21) + (m._e43 * n._e31) + (m._e44 * n._e41) , (m._e41 * n._e12) + (m._e42 * n._e22) + (m._e43 * n._e32) + (m._e44 * n._e42) , (m._e41 * n._e13) + (m._e42 * n._e23) + (m._e43 * n._e33) + (m._e44 * n._e43) , (m._e41 * n._e14) + (m._e42 * n._e24) + (m._e43 * n._e34) + (m._e44 * n._e44) };
+	Matrix4x4 matrixMultiply = {(m._e11 * n._e11) + (m._e12 * n._e21) + (m._e13 * n._e31) + (m._e14 * n._e41), (m._e11 * n._e12) + (m._e12 * n._e22) + (m._e13 * n._e32) + (m._e14 * n._e42), (m._e11 * n._e13) + (m._e12 * n._e23) + (m._e13 * n._e33) + (m._e14 * n._e43), (m._e11 * n._e14) + (m._e12 * n._e24) + (m._e13 * n._e34) + (m._e14 * n._e44),
+								(m._e21 * n._e11) + (m._e22 * n._e21) + (m._e23 * n._e31) + (m._e24 * n._e41), (m._e21 * n._e12) + (m._e22 * n._e22) + (m._e23 * n._e32) + (m._e24 * n._e42), (m._e21 * n._e13) + (m._e22 * n._e23) + (m._e23 * n._e33) + (m._e24 * n._e43), (m._e21 * n._e14) + (m._e22 * n._e24) + (m._e23 * n._e34) + (m._e24 * n._e44),
+								(m._e31 * n._e11) + (m._e32 * n._e21) + (m._e33 * n._e31) + (m._e34 * n._e41), (m._e31 * n._e12) + (m._e32 * n._e22) + (m._e33 * n._e32) + (m._e34 * n._e42), (m._e31 * n._e13) + (m._e32 * n._e23) + (m._e33 * n._e33) + (m._e34 * n._e43), (m._e31 * n._e14) + (m._e32 * n._e24) + (m._e33 * n._e34) + (m._e34 * n._e44),
+								(m._e41 * n._e11) + (m._e42 * n._e21) + (m._e43 * n._e31) + (m._e44 * n._e41), (m._e41 * n._e12) + (m._e42 * n._e22) + (m._e43 * n._e32) + (m._e44 * n._e42), (m._e41 * n._e13) + (m._e42 * n._e23) + (m._e43 * n._e33) + (m._e44 * n._e43), (m._e41 * n._e14) + (m._e42 * n._e24) + (m._e43 * n._e34) + (m._e44 * n._e44)};
 	return matrixMultiply;
 }
 
@@ -647,11 +646,11 @@ Matrix4x4 Matrix_Matrix_Multiply(Matrix4x4 m, Matrix4x4 n)
 // USE THIS FUNCTION TO FIND THE DETERMINANT OF A 3*3
 // MATRIX. IT CAN BE USED IN THE MATRIX DETERMINANT
 // AND MATRIX INVERSE FUNCTIONS BELOW
-// 
+//
 // RETURN:	The determinant of a 3x3 matrix
 float Matrix_Determinant(float e_11, float e_12, float e_13,
-	float e_21, float e_22, float e_23,
-	float e_31, float e_32, float e_33)
+						 float e_21, float e_22, float e_23,
+						 float e_31, float e_32, float e_33)
 {
 	return (e_11 * ((e_22 * e_33) - (e_32 * e_23))) - (e_12 * ((e_21 * e_33) - (e_31 * e_23))) + (e_13 * ((e_21 * e_32) - (e_31 * e_22)));
 }
@@ -679,10 +678,10 @@ Matrix4x4 Matrix_Inverse(Matrix4x4 m)
 	if (Matrix_Determinant(m) == 0.0f)
 		return m;
 
-	inverseMatrix = { Matrix_Determinant(m._e22, m._e23, m._e24, m._e32, m._e33, m._e34, m._e42, m._e43, m._e44)        , (-1.0f * (Matrix_Determinant(m._e21, m._e23, m._e24, m._e31, m._e33, m._e34, m._e41, m._e43, m._e44))) , Matrix_Determinant(m._e21, m._e22, m._e24, m._e31, m._e32, m._e34, m._e41, m._e42, m._e44)        , (-1.0f * (Matrix_Determinant(m._e21, m._e22, m._e23, m._e31, m._e32, m._e33, m._e41, m._e42, m._e43))),
-					 (-1.0f * (Matrix_Determinant(m._e12, m._e13, m._e14, m._e32, m._e33, m._e34, m._e42, m._e43, m._e44))) , Matrix_Determinant(m._e11, m._e13, m._e14, m._e31, m._e33, m._e34, m._e41, m._e43, m._e44)        , (-1.0f * Matrix_Determinant(m._e11, m._e12, m._e14, m._e31, m._e32, m._e34, m._e41, m._e42, m._e44))   ,        Matrix_Determinant(m._e11, m._e12, m._e13, m._e31, m._e32, m._e33, m._e41, m._e42, m._e43),
-					 Matrix_Determinant(m._e12, m._e13, m._e14, m._e22, m._e23, m._e24, m._e42, m._e43, m._e44)        , (-1.0f * (Matrix_Determinant(m._e11, m._e13, m._e14, m._e21, m._e23, m._e24, m._e41, m._e43, m._e44))) , Matrix_Determinant(m._e11, m._e12, m._e14, m._e21, m._e22, m._e24, m._e41, m._e42, m._e44)        , (-1.0f * (Matrix_Determinant(m._e11, m._e12, m._e13, m._e21, m._e22, m._e23, m._e41, m._e42, m._e43))),
-					 (-1.0f * (Matrix_Determinant(m._e12, m._e13, m._e14, m._e22, m._e23, m._e24, m._e32, m._e33, m._e34))) , Matrix_Determinant(m._e11, m._e13, m._e14, m._e21, m._e23, m._e24, m._e31, m._e33, m._e34)        , (-1.0f * (Matrix_Determinant(m._e11, m._e12, m._e14, m._e21, m._e22, m._e24, m._e31, m._e32, m._e34))) ,        Matrix_Determinant(m._e11, m._e12, m._e13, m._e21, m._e22, m._e23, m._e31, m._e32, m._e33) };
+	inverseMatrix = {Matrix_Determinant(m._e22, m._e23, m._e24, m._e32, m._e33, m._e34, m._e42, m._e43, m._e44), (-1.0f * (Matrix_Determinant(m._e21, m._e23, m._e24, m._e31, m._e33, m._e34, m._e41, m._e43, m._e44))), Matrix_Determinant(m._e21, m._e22, m._e24, m._e31, m._e32, m._e34, m._e41, m._e42, m._e44), (-1.0f * (Matrix_Determinant(m._e21, m._e22, m._e23, m._e31, m._e32, m._e33, m._e41, m._e42, m._e43))),
+					 (-1.0f * (Matrix_Determinant(m._e12, m._e13, m._e14, m._e32, m._e33, m._e34, m._e42, m._e43, m._e44))), Matrix_Determinant(m._e11, m._e13, m._e14, m._e31, m._e33, m._e34, m._e41, m._e43, m._e44), (-1.0f * Matrix_Determinant(m._e11, m._e12, m._e14, m._e31, m._e32, m._e34, m._e41, m._e42, m._e44)), Matrix_Determinant(m._e11, m._e12, m._e13, m._e31, m._e32, m._e33, m._e41, m._e42, m._e43),
+					 Matrix_Determinant(m._e12, m._e13, m._e14, m._e22, m._e23, m._e24, m._e42, m._e43, m._e44), (-1.0f * (Matrix_Determinant(m._e11, m._e13, m._e14, m._e21, m._e23, m._e24, m._e41, m._e43, m._e44))), Matrix_Determinant(m._e11, m._e12, m._e14, m._e21, m._e22, m._e24, m._e41, m._e42, m._e44), (-1.0f * (Matrix_Determinant(m._e11, m._e12, m._e13, m._e21, m._e22, m._e23, m._e41, m._e42, m._e43))),
+					 (-1.0f * (Matrix_Determinant(m._e12, m._e13, m._e14, m._e22, m._e23, m._e24, m._e32, m._e33, m._e34))), Matrix_Determinant(m._e11, m._e13, m._e14, m._e21, m._e23, m._e24, m._e31, m._e33, m._e34), (-1.0f * (Matrix_Determinant(m._e11, m._e12, m._e14, m._e21, m._e22, m._e24, m._e31, m._e32, m._e34))), Matrix_Determinant(m._e11, m._e12, m._e13, m._e21, m._e22, m._e23, m._e31, m._e32, m._e33)};
 
 	return Matrix_Scalar_Multiply(Matrix_Transpose(inverseMatrix), (1.0f / Matrix_Determinant(m)));
 }

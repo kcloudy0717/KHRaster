@@ -3,13 +3,12 @@
 
 struct Rasterizer
 {
-	using PFN_VS = void(*)(Vertex&);
-	using PFN_PS = void(*)(UINT&, Vertex&);
+	using PFN_VS = void (*)(Vertex &);
+	using PFN_PS = void (*)(UINT &, Vertex &);
 
-	Rasterizer(RenderTarget* pRenderTarget)
+	Rasterizer(RenderTarget *pRenderTarget)
 		: pRenderTarget(pRenderTarget)
 	{
-
 	}
 
 	void DrawPoint(Vertex V)
@@ -88,9 +87,9 @@ struct Rasterizer
 		float rZA = 1.0f / V0.position.w;
 		float rZB = 1.0f / V1.position.w;
 		float rZC = 1.0f / V2.position.w;
-		V0.uv = { V0.uv.x / V0.position.w, V0.uv.y / V0.position.w };
-		V1.uv = { V1.uv.x / V1.position.w, V1.uv.y / V1.position.w };
-		V2.uv = { V2.uv.x / V2.position.w, V2.uv.y / V2.position.w };
+		V0.uv = {V0.uv.x / V0.position.w, V0.uv.y / V0.position.w};
+		V1.uv = {V1.uv.x / V1.position.w, V1.uv.y / V1.position.w};
+		V2.uv = {V2.uv.x / V2.position.w, V2.uv.y / V2.position.w};
 		// perspective divide
 		PerspectiveDivide(V0.position);
 		PerspectiveDivide(V1.position);
@@ -110,7 +109,7 @@ struct Rasterizer
 		{
 			for (int x = static_cast<int>(startX); x <= endX; x++)
 			{
-				Vec3 barycentrics = BarycentricCoordinates(V0.position, V1.position, V2.position, { static_cast<float>(x), static_cast<float>(y), 0, 0 });
+				Vec3 barycentrics = BarycentricCoordinates(V0.position, V1.position, V2.position, {static_cast<float>(x), static_cast<float>(y), 0, 0});
 				if (barycentrics.x >= 0.0f && barycentrics.x <= 1.0f && barycentrics.y >= 0.0f && barycentrics.y <= 1.0f && barycentrics.z >= 0.0f && barycentrics.z <= 1.0f)
 				{
 					float finalRZ = BarycentricInterpolation(rZA, rZB, rZC, barycentrics);
@@ -140,7 +139,7 @@ struct Rasterizer
 	//	1 : One vertex is clipped
 	//	2 : Both vertex is present in the view frustrum
 	///////////////////////////////////////////////////
-	int NearPlaneLineClipping(Vertex& Src, Vertex& Dst)
+	int NearPlaneLineClipping(Vertex &Src, Vertex &Dst)
 	{
 		// both vertex is hidden
 		if (Src.position.z < 0.0f &&
@@ -172,7 +171,7 @@ struct Rasterizer
 		return -1;
 	}
 
-	RenderTarget* pRenderTarget = nullptr;
+	RenderTarget *pRenderTarget = nullptr;
 	PFN_VS VS = nullptr;
 	PFN_PS PS = nullptr;
 };

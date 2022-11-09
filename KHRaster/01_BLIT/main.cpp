@@ -13,7 +13,7 @@
 #include "tiles_12.h"
 #include "teleporter_hit.h"
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	// Tile info
 	/*
@@ -27,20 +27,20 @@ int main(int argc, char** argv)
 	Park		16		112		143			71
 	Fence		212		112		39			47
 	*/
-	const RECT GrassBlock = { 288, 128, 320, 160 };
-	const RECT House = { 16, 16, 111, 98 };
-	const RECT RedHouse = { 128, 32, 191, 98 };
-	const RECT MailBox = { 176, 112, 191, 135 };
-	const RECT GreenHouse = { 208, 32, 303, 96 };
-	const RECT Tree = { 320, 16, 383, 98 };
-	const RECT Park = { 16, 112, 159, 183 };
-	const RECT Fence = { 212, 112, 251, 159 };
+	const RECT GrassBlock = {288, 128, 320, 160};
+	const RECT House = {16, 16, 111, 98};
+	const RECT RedHouse = {128, 32, 191, 98};
+	const RECT MailBox = {176, 112, 191, 135};
+	const RECT GreenHouse = {208, 32, 303, 96};
+	const RECT Tree = {320, 16, 383, 98};
+	const RECT Park = {16, 112, 159, 183};
+	const RECT Fence = {212, 112, 251, 159};
 
 	const UINT64 Width = 500;
 	const UINT64 Height = 500;
 
 	srand(time(NULL));
-	
+
 	Texture2D<UINT> Surface(Width, Height), CopySurface(Width, Height);
 
 	// grass
@@ -85,7 +85,7 @@ int main(int argc, char** argv)
 			Surface = CopySurface;
 
 			// draw cells each frame
-			RECT Teleporter = { x, y, x + 128, y + 128 };
+			RECT Teleporter = {x, y, x + 128, y + 128};
 			Surface.BLIT(teleporter_hit_pixels, teleporter_hit_width, Teleporter, Width / 2, Height / 2);
 
 			x += 128;
@@ -101,6 +101,6 @@ int main(int argc, char** argv)
 		}
 	} while (RS_Update(Surface, Surface.NumPixels));
 	RS_Shutdown();
-	
+
 	return Save(Surface, 3);
 }

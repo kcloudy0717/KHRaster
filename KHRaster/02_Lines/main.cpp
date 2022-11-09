@@ -25,15 +25,15 @@ float Lerp(float start, float end, float ratio);
 float Slope(Vector2D start, Vector2D end);
 float ImplicitLineEquation(Vector2D start, Vector2D end, Vector2D position);
 
-void DrawBresenhamLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
-void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
-void DrawParametrixLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
+void DrawBresenhamLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
+void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
+void DrawParametrixLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
 
-void DrawBresenhamLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
-void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
-void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface);
+void DrawBresenhamLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
+void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
+void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface);
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	std::cout << "Controls\n";
 	std::cout << "1: Draw Bresenham Line\n";
@@ -55,36 +55,30 @@ int main(int argc, char** argv)
 	CopySurface = Surface;
 
 	Vertex2D bresenhamLine[2] =
-	{
-		{{0.0f, 100.0f}, 0xffff0000},
-		{{Width - 1.0f, Height - 21.0f}, 0xffff0000}
-	};
+		{
+			{{0.0f, 100.0f}, 0xffff0000},
+			{{Width - 1.0f, Height - 21.0f}, 0xffff0000}};
 	Vertex2D midpointLine[2] =
-	{
-		{{0.0f, 110.0f}, 0xff00ff00},
-		{{Width - 1.0f, Height - 11.0f}, 0xff00ff00}
-	};
+		{
+			{{0.0f, 110.0f}, 0xff00ff00},
+			{{Width - 1.0f, Height - 11.0f}, 0xff00ff00}};
 	Vertex2D parametrixLine[2] =
-	{
-		{{0.0f, 120.0f}, 0xffff00ff},
-		{{Width - 1.0f, Height - 1.0f}, 0xff00ffff}
-	};
+		{
+			{{0.0f, 120.0f}, 0xffff00ff},
+			{{Width - 1.0f, Height - 1.0f}, 0xff00ffff}};
 
 	Vertex2D rngBresenhamLine[2] =
-	{
-		{{0, 0}, 0xffff0000},
-		{{0, 0}, 0xffff0000}
-	};
+		{
+			{{0, 0}, 0xffff0000},
+			{{0, 0}, 0xffff0000}};
 	Vertex2D rngMidpointLine[2] =
-	{
-		{{0, 0}, 0xff00ff00},
-		{{0, 0}, 0xff00ff00}
-	};
+		{
+			{{0, 0}, 0xff00ff00},
+			{{0, 0}, 0xff00ff00}};
 	Vertex2D rngParametrixLine[2] =
-	{
-		{{0, 0}, 0xffff00ff},
-		{{0, 0}, 0xff00ffff}
-	};
+		{
+			{{0, 0}, 0xffff00ff},
+			{{0, 0}, 0xff00ffff}};
 	bool useOptimizedVersion = true;
 
 	float randStartX = 0.0f;
@@ -237,7 +231,7 @@ float ImplicitLineEquation(Vector2D start, Vector2D end, Vector2D position)
 	return (start.y - end.y) * position.x + (end.x - start.x) * position.y + start.x * end.y - start.y * end.x;
 }
 
-void DrawBresenhamLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawBresenhamLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
 	int x = static_cast<int>(start.position.x);
 	int y = static_cast<int>(start.position.y);
@@ -332,7 +326,7 @@ void DrawBresenhamLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 		}
 	}
 }
-void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
 	int x = static_cast<int>(start.position.x);
 	int y = static_cast<int>(start.position.y);
@@ -342,7 +336,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 	float implicitResult = 0.0f;
 	float xOffset = 0.0f;
 	float yOffset = 0.0f;
-	Vector2D midPoint = { 0.0f, 0.0f };
+	Vector2D midPoint = {0.0f, 0.0f};
 	// vertical line case
 	if (deltaX == 0.0f)
 	{
@@ -352,7 +346,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 			for (y = static_cast<int>(end.position.y); y < static_cast<int>(start.position.y); ++y)
 			{
 				pSurface->SetPixel(x, y, start.color);
-				midPoint = { static_cast<float>(x), static_cast<float>(y) + yOffset };
+				midPoint = {static_cast<float>(x), static_cast<float>(y) + yOffset};
 				implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 				if (implicitResult < 0.0f)
 					++x;
@@ -363,7 +357,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 			for (y = static_cast<int>(start.position.y); y < static_cast<int>(end.position.y); ++y)
 			{
 				pSurface->SetPixel(x, y, start.color);
-				midPoint = { static_cast<float>(x), static_cast<float>(y) + yOffset };
+				midPoint = {static_cast<float>(x), static_cast<float>(y) + yOffset};
 				implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 				if (implicitResult < 0.0f)
 					++x;
@@ -383,7 +377,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 				for (; x > static_cast<int>(end.position.x); --x)
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult > 0.0f && yOffset > 0.0f) || (implicitResult < 0.0f && yOffset < 0.0f))
 						y += adjust;
@@ -394,7 +388,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 				for (; x < static_cast<int>(end.position.x); ++x)
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult < 0.0f && yOffset > 0.0f) || (implicitResult > 0.0f && yOffset < 0.0f))
 						y += adjust;
@@ -412,7 +406,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 				for (; y > static_cast<int>(end.position.y); --y)
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult > 0.0f && xOffset < 0.0f) || (implicitResult < 0.0f && xOffset > 0.0f))
 						x += adjust;
@@ -423,7 +417,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 				for (; y < static_cast<int>(end.position.y); ++y)
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult < 0.0f && xOffset < 0.0f) || (implicitResult > 0.0f && xOffset > 0.0f))
 						x += adjust;
@@ -432,7 +426,7 @@ void DrawMidpointLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 		}
 	}
 }
-void DrawParametrixLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawParametrixLine(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
 	int x = static_cast<int>(start.position.x);
 	int y = static_cast<int>(start.position.y);
@@ -525,7 +519,7 @@ void DrawParametrixLine(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
 }
 
 // Shrubberies
-void DrawBresenhamLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawBresenhamLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
 	int x = static_cast<int>(start.position.x);
 	int y = static_cast<int>(start.position.y);
@@ -588,7 +582,7 @@ void DrawBresenhamLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* p
 			++x;
 	}
 }
-void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
 	int x = static_cast<int>(start.position.x);
 	int y = static_cast<int>(start.position.y);
@@ -599,14 +593,14 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 	float implicitResult = 0.0f;
 	float xOffset = 0.0f;
 	float yOffset = 0.0f;
-	Vector2D midPoint = { 0.0f, 0.0f };
+	Vector2D midPoint = {0.0f, 0.0f};
 	int numOfPixelToDraw = 0;
 	bool steepSlope = false;
 	if (abs(deltaX) >= abs(deltaY)) // if change in x is greater than change in y, we draw x many pixels
 		numOfPixelToDraw = static_cast<int>(abs(deltaX));
 	else
 		numOfPixelToDraw = static_cast<int>(abs(deltaY));
-	if (deltaX == 0.0f)	// vertical line case
+	if (deltaX == 0.0f) // vertical line case
 	{
 		yOffset = 0.5f;
 		if (end.position.y < start.position.y) // negative direction on y axis
@@ -633,12 +627,12 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 
 	for (int i = 0; i < numOfPixelToDraw; ++i)
 	{
-		if (deltaX == 0.0f)	// vertical line case
+		if (deltaX == 0.0f) // vertical line case
 		{
 			if (end.position.y < start.position.y) // negative direction on y axis
 			{
 				pSurface->SetPixel(x, y, start.color);
-				midPoint = { static_cast<float>(x), static_cast<float>(y) + yOffset };
+				midPoint = {static_cast<float>(x), static_cast<float>(y) + yOffset};
 				implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 				if (implicitResult < 0.0f)
 					++x;
@@ -646,7 +640,7 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 			else // positive direction on y axis
 			{
 				pSurface->SetPixel(x, y, start.color);
-				midPoint = { static_cast<float>(x), static_cast<float>(y) + yOffset };
+				midPoint = {static_cast<float>(x), static_cast<float>(y) + yOffset};
 				implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 				if (implicitResult < 0.0f)
 					++x;
@@ -659,7 +653,7 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 				if (end.position.x < start.position.x) // negative direction on x axis
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult > 0.0f && yOffset > 0.0f) || (implicitResult < 0.0f && yOffset < 0.0f))
 						y += adjust;
@@ -667,7 +661,7 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 				else // positive direction on x axis
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult < 0.0f && yOffset > 0.0f) || (implicitResult > 0.0f && yOffset < 0.0f))
 						y += adjust;
@@ -678,7 +672,7 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 				if (end.position.y < start.position.y) // negative direction on y axis
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult > 0.0f && xOffset < 0.0f) || (implicitResult < 0.0f && xOffset > 0.0f))
 						x += adjust;
@@ -686,7 +680,7 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 				else // positive direction on y axis
 				{
 					pSurface->SetPixel(x, y, start.color);
-					midPoint = { static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset };
+					midPoint = {static_cast<float>(x) + xOffset, static_cast<float>(y) + yOffset};
 					implicitResult = ImplicitLineEquation(start.position, end.position, midPoint);
 					if ((implicitResult < 0.0f && xOffset < 0.0f) || (implicitResult > 0.0f && xOffset > 0.0f))
 						x += adjust;
@@ -705,30 +699,30 @@ void DrawMidpointLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pS
 			++y;
 	}
 }
-void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* pSurface)
+void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT> *pSurface)
 {
-	//int x = static_cast<int>(start.position.x);
-	//int y = static_cast<int>(start.position.y);
-	//float deltaX = end.position.x - start.position.x;
-	//float deltaY = end.position.y - start.position.y;
-	//float ratio = 0.0f;
-	//float m = Slope(start.position, end.position);
-	//unsigned int resultColor = 0;
-	//int numOfPixelToDraw = 0;
-	//bool steepSlope = false;
-	//if (abs(deltaX) >= abs(deltaY)) // if change in x is greater than change in y, we draw x many pixels
+	// int x = static_cast<int>(start.position.x);
+	// int y = static_cast<int>(start.position.y);
+	// float deltaX = end.position.x - start.position.x;
+	// float deltaY = end.position.y - start.position.y;
+	// float ratio = 0.0f;
+	// float m = Slope(start.position, end.position);
+	// unsigned int resultColor = 0;
+	// int numOfPixelToDraw = 0;
+	// bool steepSlope = false;
+	// if (abs(deltaX) >= abs(deltaY)) // if change in x is greater than change in y, we draw x many pixels
 	//	numOfPixelToDraw = static_cast<int>(abs(deltaX));
-	//else
+	// else
 	//	numOfPixelToDraw = static_cast<int>(abs(deltaY));
-	//if (deltaX == 0.0f)	// vertical line case
+	// if (deltaX == 0.0f)	// vertical line case
 	//{
 	//	if (end.position.y < start.position.y) // negative direction on y axis
 	//	{
 	//		y = static_cast<int>(end.position.y);
 	//		deltaY = start.position.y - end.position.y;
 	//	}
-	//}
-	//else
+	// }
+	// else
 	//{
 	//	if (m <= 1.0f && m >= -1.0f) // if run is greater than rise
 	//	{
@@ -747,8 +741,8 @@ void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* 
 	//			deltaY = start.position.y - end.position.y;
 	//		}
 	//	}
-	//}
-	//for (int i = 0; i < numOfPixelToDraw; ++i)
+	// }
+	// for (int i = 0; i < numOfPixelToDraw; ++i)
 	//{
 	//	if (steepSlope || deltaX == 0.0f)
 	//	{
@@ -786,7 +780,7 @@ void DrawParametrixLineOptimized(Vertex2D start, Vertex2D end, Texture2D<UINT>* 
 	//		DrawPixel(x, static_cast<int>(floor(_y + 0.5f)), resultColor);
 	//		++x;
 	//	}
-	//}
+	// }
 
 	// x = (B - A) * R + A
 	float dx = fabs(end.position.x - start.position.x);

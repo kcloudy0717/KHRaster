@@ -22,7 +22,7 @@ enum RENDER_OPTIONS
 	TexturedCube
 };
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	std::cout << "Controls\n";
 	std::cout << "1: Wireframed cube\n";
@@ -40,61 +40,61 @@ int main(int argc, char** argv)
 	Texture2D<UINT> CatMarioModel(CatMarioModel_Death_width, CatMarioModel_Death_height, CatMarioModel_Death_numlevels, CatMarioModel_Death_leveloffsets, CatMarioModel_Death_pixels);
 
 	unsigned int cubeColor = GREEN;
-	
+
 	Vertex cube[16] =
-	{
-		// front face
-		// top vertices, -z
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 0
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 1
-		// bottom vertices -z
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 2
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 3
-		// back face
-		// top vertices, +z
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 4
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 5
-		// bottom vertices +z
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 6
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 7
-		// left face
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 8
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 9
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 10
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 11
-		// right face
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 12
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 13
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 14
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 15
-	};
+		{
+			// front face
+			// top vertices, -z
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 0
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}},  // 1
+																 // bottom vertices -z
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 2
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}},  // 3
+																 // back face
+																 // top vertices, +z
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 4
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}},	 // 5
+																// bottom vertices +z
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 6
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}},	 // 7
+																// left face
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}},  // 8
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 9
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}},  // 10
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 11
+																  // right face
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 12
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}},	 // 13
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 14
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}},	 // 15
+		};
 	Vertex cube1[16] =
-	{
-		// front face
-		// top vertices, -z
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 0
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 1
-		// bottom vertices -z
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 2
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 3
-		// back face
-		// top vertices, +z
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 4
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 5
-		// bottom vertices +z
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 6
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 7
-		// left face
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 8
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 9
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 10
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 11
-		// right face
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 12
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 13
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 14
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 15
-	};
+		{
+			// front face
+			// top vertices, -z
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 0
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}},  // 1
+																 // bottom vertices -z
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 2
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}},  // 3
+																 // back face
+																 // top vertices, +z
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 4
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}},	 // 5
+																// bottom vertices +z
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 6
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}},	 // 7
+																// left face
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor, {0.0f, 0.0f}},  // 8
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor, {1.0f, 0.0f}}, // 9
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor, {0.0f, 1.0f}},  // 10
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor, {1.0f, 1.0f}}, // 11
+																  // right face
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor, {0.0f, 0.0f}}, // 12
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor, {1.0f, 0.0f}},	 // 13
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor, {0.0f, 1.0f}}, // 14
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor, {1.0f, 1.0f}},	 // 15
+		};
 	Matrix4x4 gridMatrix = Matrix_Identity();
 	Matrix4x4 cubeMatrix = Matrix_Create_Translation(0.0f, 0.0f, 0.0f);
 	Matrix4x4 cube1Matrix = Matrix_Matrix_Multiply(Matrix_Create_Translation(0.75f, 0.5f, 0.0f), Matrix_Create_Scale(0.5f, 0.5f, 0.5f));
@@ -212,13 +212,13 @@ int main(int argc, char** argv)
 				// front face
 				Rasterizer.FillTriangleBetterBrute(cube1[0], cube1[1], cube1[2]);
 				Rasterizer.FillTriangleBetterBrute(cube1[3], cube1[1], cube1[2]);
-				// left face				
+				// left face
 				Rasterizer.FillTriangleBetterBrute(cube1[8], cube1[9], cube1[10]);
 				Rasterizer.FillTriangleBetterBrute(cube1[11], cube1[9], cube1[10]);
-				// right face				
+				// right face
 				Rasterizer.FillTriangleBetterBrute(cube1[12], cube1[13], cube1[14]);
 				Rasterizer.FillTriangleBetterBrute(cube1[15], cube1[13], cube1[14]);
-				// back face				
+				// back face
 				Rasterizer.FillTriangleBetterBrute(cube1[5], cube1[4], cube1[7]);
 				Rasterizer.FillTriangleBetterBrute(cube1[6], cube1[4], cube1[7]);
 			}
@@ -243,9 +243,9 @@ int main(int argc, char** argv)
 			cubeMatrix = Matrix_Matrix_Multiply(Matrix_Create_Translation(0.0f, 0.0f, 0.0f), Matrix_Create_Rotation_Y(angle));
 			// cube 1 stuff
 			cube1Matrix = Matrix_Matrix_Multiply(Matrix_Create_Translation(0.35f, 0.25f, 0.0f), Matrix_Create_Scale(0.5f, 0.5f, 0.5f));
-			//cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
+			// cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
 			cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, cubeMatrix);
-			//cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
+			// cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
 
 			Rasterizer.VS = nullptr;
 			Rasterizer.PS = nullptr;

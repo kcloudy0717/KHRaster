@@ -22,15 +22,11 @@ inline int Flatten2DTo1D(int x, int y, int width)
 	return y * width + x;
 }
 
-template<typename T>
+template <typename T>
 struct Texture2D
 {
-	Texture2D(UINT Width, UINT Height, UINT MipLevels = 1, const UINT* pMipLevelOffsets = nullptr, const T* pData = nullptr)
-		: Width(Width)
-		, Height(Height)
-		, MipLevels(MipLevels)
-		, NumPixels(UINT64(Width)* UINT64(Height))
-		, MiplevelOffsets(MipLevels)
+	Texture2D(UINT Width, UINT Height, UINT MipLevels = 1, const UINT *pMipLevelOffsets = nullptr, const T *pData = nullptr)
+		: Width(Width), Height(Height), MipLevels(MipLevels), NumPixels(UINT64(Width) * UINT64(Height)), MiplevelOffsets(MipLevels)
 	{
 		if (pMipLevelOffsets)
 		{
@@ -52,7 +48,7 @@ struct Texture2D
 		return &Pixels[0];
 	}
 
-	Texture2D<T>& operator=(const Texture2D<T>& rhs)
+	Texture2D<T> &operator=(const Texture2D<T> &rhs)
 	{
 		assert(NumPixels == rhs.NumPixels);
 		if (this != &rhs)
@@ -100,7 +96,7 @@ struct Texture2D
 		return {};
 	}
 
-	void BLIT(const T* pSource, UINT SourceWidth, const RECT& BlockRect, UINT DstX, UINT DstY)
+	void BLIT(const T *pSource, UINT SourceWidth, const RECT &BlockRect, UINT DstX, UINT DstY)
 	{
 		UINT BlockWidth = BlockRect.right - BlockRect.left;
 		UINT BlockHeight = BlockRect.bottom - BlockRect.top;
@@ -151,11 +147,8 @@ struct Texture2D
 struct RenderTarget
 {
 	RenderTarget(UINT Width, UINT Height)
-		: RT1(Width, Height)
-		, DepthBuffer(Width, Height)
-		, Width(Width), Height(Height), NumPixels(UINT64(Width)* UINT64(Height))
+		: RT1(Width, Height), DepthBuffer(Width, Height), Width(Width), Height(Height), NumPixels(UINT64(Width) * UINT64(Height))
 	{
-
 	}
 
 	void SetPixel(UINT X, UINT Y, UINT Color, FLOAT Depth)
@@ -193,4 +186,4 @@ struct RenderTarget
 	UINT64 NumPixels;
 };
 
-int Save(const Texture2D<UINT>& Image, int NumChannels);
+int Save(const Texture2D<UINT> &Image, int NumChannels);

@@ -4,12 +4,12 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb/stb_image_write.h>
 
-int Save(const Texture2D<UINT>& Image, int NumChannels)
+int Save(const Texture2D<UINT> &Image, int NumChannels)
 {
 	// Saves a input image as a png using stb
 	std::unique_ptr<BYTE[]> Pixels = std::make_unique<BYTE[]>(Image.Width * Image.Height * NumChannels);
 
-	BYTE* pDst = Pixels.get();
+	BYTE *pDst = Pixels.get();
 
 	int index = 0;
 	for (int y = 0; y < int(Image.Height); ++y)
@@ -30,9 +30,9 @@ int Save(const Texture2D<UINT>& Image, int NumChannels)
 	}
 
 #ifdef _DEBUG
-	const char* Name = "Debug.png";
+	const char *Name = "Debug.png";
 #else
-	const char* Name = "Release.png";
+	const char *Name = "Release.png";
 #endif
 	if (stbi_write_png(Name, Image.Width, Image.Height, 3, Pixels.get(), Image.Width * NumChannels))
 	{

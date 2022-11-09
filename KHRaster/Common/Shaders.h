@@ -19,13 +19,13 @@ enum FILTER
 struct ConstantBuffer
 {
 	Matrix4x4 World = Matrix_Identity();
-	Texture2D<UINT>* pTexture = nullptr;
+	Texture2D<UINT> *pTexture = nullptr;
 	FILTER Filter = None;
 	UINT SelectedMip = 0;
 
 	// Light stuff
-	Vertex light = { 0 };
-	Vertex pointLight = { 0 };
+	Vertex light = {0};
+	Vertex pointLight = {0};
 	float lightRadius = 1.0f;
 } ConstantBuffer;
 
@@ -41,13 +41,11 @@ struct Camera
 		float yScale = 1.0f / tanf(Degrees_To_Radians(FOV) * 0.5f);
 		float xScale = yScale * AspectRatio;
 
-		return 
-		{
+		return {
 			xScale, 0.0f, 0.0f, 0.0f,
 			0.0f, yScale, 0.0f, 0.0f,
 			0.0f, 0.0f, (Far / (Far - Near)), 1.0f,
-			0.0f, 0.0f, (-(Far * Near) / (Far - Near)), 0.0f
-		};
+			0.0f, 0.0f, (-(Far * Near) / (Far - Near)), 0.0f};
 	}
 
 	// all matrices
@@ -99,7 +97,7 @@ inline unsigned int ColorBlendBGRA(unsigned int a, unsigned int b, float ratio)
 	return (resultBlue << 24) | (resultGreen << 16) | (resultRed << 8) | resultAlpha;
 }
 
-inline unsigned int ColorBlend(const Vertex& V0, const Vertex& V1, const Vertex& V2, const Vec3& barycentrics)
+inline unsigned int ColorBlend(const Vertex &V0, const Vertex &V1, const Vertex &V2, const Vec3 &barycentrics)
 {
 	unsigned int aAlpha = (V0.color & 0xff000000) >> 24;
 	unsigned int aRed = (V0.color & 0x00ff0000) >> 16;
@@ -164,7 +162,7 @@ inline unsigned int ColorCombine(unsigned a, unsigned b)
 	return (resultBlue << 24) | (resultGreen << 16) | (resultRed << 8) | resultAlpha;
 }
 
-void VertexShader(Vertex& V)
+void VertexShader(Vertex &V)
 {
 	// World space
 	V.position = Vector_Matrix_Multiply(V.position, ConstantBuffer.World);
@@ -177,12 +175,12 @@ void VertexShader(Vertex& V)
 	V.position = Vector_Matrix_Multiply(V.position, Camera.Projection());
 }
 
-void PixelShader(UINT& color, Vertex& V)
+void PixelShader(UINT &color, Vertex &V)
 {
 	auto pTexture = ConstantBuffer.pTexture;
 	if (pTexture && pTexture->MipLevels > 0)
 	{
-		const auto& textureLevelOffsets = pTexture->MiplevelOffsets;
+		const auto &textureLevelOffsets = pTexture->MiplevelOffsets;
 
 		UINT SelectedMip = (UINT)ConstantBuffer.SelectedMip;
 
@@ -227,32 +225,32 @@ void PixelShader(UINT& color, Vertex& V)
 	color = ((color & 0xff000000) >> 24 | ((color & 0x00ff0000) >> 8) | ((color & 0x0000ff00) << 8) | ((color & 0x000000ff) << 24));
 }
 
-void PS_White(UINT& color, Vertex& v)
+void PS_White(UINT &color, Vertex &v)
 {
 	color = WHITE;
 }
 
-void PS_Red(UINT& color, Vertex& v)
+void PS_Red(UINT &color, Vertex &v)
 {
 	color = RED;
 }
 
-void PS_Green(UINT& color, Vertex& v)
+void PS_Green(UINT &color, Vertex &v)
 {
 	color = GREEN;
 }
 
-void PS_Blue(UINT& color, Vertex& v)
+void PS_Blue(UINT &color, Vertex &v)
 {
 	color = BLUE;
 }
 
-void PS_Purple(UINT& color, Vertex& v)
+void PS_Purple(UINT &color, Vertex &v)
 {
 	color = PURPLE;
 }
 
-void PS_Texture(UINT& color, Vertex& v)
+void PS_Texture(UINT &color, Vertex &v)
 {
 	int x = static_cast<int>(v.uv.x * ConstantBuffer.pTexture->Width);
 	int y = static_cast<int>(v.uv.y * ConstantBuffer.pTexture->Height);
@@ -279,7 +277,7 @@ void ResetTranslation()
 }
 #pragma endregion
 
-void LerpAllAttributes(Vertex& Src, Vertex& Dst, float ratio)
+void LerpAllAttributes(Vertex &Src, Vertex &Dst, float ratio)
 {
 	Src.position.x = LinearInterpolation(Src.position.x, Dst.position.x, ratio);
 	Src.position.y = LinearInterpolation(Src.position.y, Dst.position.y, ratio);

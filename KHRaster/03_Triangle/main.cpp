@@ -10,7 +10,7 @@
 #include <Common/RasterSurface.h>
 #include <Common/XTime.h>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	const UINT64 Width = 500;
 	const UINT64 Height = 500;
@@ -19,11 +19,10 @@ int main(int argc, char** argv)
 	Rasterizer Rasterizer(&RenderTarget);
 
 	const Vertex vertices[3] =
-	{
-		{ { 0.0f, 0.5f, 0.0f, 1.0f }, RED },
-		{ { -0.5f, 0.0f, 0.0f, 1.0f }, GREEN },
-		{ { 0.5f, 0.0f, 0.0f, 1.0f }, BLUE }
-	};
+		{
+			{{0.0f, 0.5f, 0.0f, 1.0f}, RED},
+			{{-0.5f, 0.0f, 0.0f, 1.0f}, GREEN},
+			{{0.5f, 0.0f, 0.0f, 1.0f}, BLUE}};
 
 	XTime XTime;
 	XTime.Restart();

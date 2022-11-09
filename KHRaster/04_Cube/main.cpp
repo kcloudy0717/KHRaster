@@ -10,7 +10,7 @@
 #include <Common/RasterSurface.h>
 #include <Common/XTime.h>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	std::cout << "Controls\n";
 	std::cout << "1: Increase FOV\n";
@@ -27,90 +27,86 @@ int main(int argc, char** argv)
 	unsigned int gridColor = WHITE;
 	unsigned int cubeColor = GREEN;
 	Vertex leftVertices[11] =
-	{
-		{-0.5f, 0.0f,  0.5f, 1.0f, gridColor},
-		{-0.5f, 0.0f,  0.4f, 1.0f, gridColor},
-		{-0.5f, 0.0f,  0.3f, 1.0f, gridColor},
-		{-0.5f, 0.0f,  0.2f, 1.0f, gridColor},
-		{-0.5f, 0.0f,  0.1f, 1.0f, gridColor},
-		{-0.5f, 0.0f,  0.0f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.1f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.2f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.3f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.4f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.5f, 1.0f, gridColor}
-	};
+		{
+			{-0.5f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.4f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.3f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.2f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.1f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.0f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.1f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.2f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.3f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.4f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.5f, 1.0f, gridColor}};
 	Vertex rightVertices[11] =
-	{
-		{0.5f, 0.0f,  0.5f, 1.0f, gridColor},
-		{0.5f, 0.0f,  0.4f, 1.0f, gridColor},
-		{0.5f, 0.0f,  0.3f, 1.0f, gridColor},
-		{0.5f, 0.0f,  0.2f, 1.0f, gridColor},
-		{0.5f, 0.0f,  0.1f, 1.0f, gridColor},
-		{0.5f, 0.0f,  0.0f, 1.0f, gridColor},
-		{0.5f, 0.0f, -0.1f, 1.0f, gridColor},
-		{0.5f, 0.0f, -0.2f, 1.0f, gridColor},
-		{0.5f, 0.0f, -0.3f, 1.0f, gridColor},
-		{0.5f, 0.0f, -0.4f, 1.0f, gridColor},
-		{0.5f, 0.0f, -0.5f, 1.0f, gridColor}
-	};
+		{
+			{0.5f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.5f, 0.0f, 0.4f, 1.0f, gridColor},
+			{0.5f, 0.0f, 0.3f, 1.0f, gridColor},
+			{0.5f, 0.0f, 0.2f, 1.0f, gridColor},
+			{0.5f, 0.0f, 0.1f, 1.0f, gridColor},
+			{0.5f, 0.0f, 0.0f, 1.0f, gridColor},
+			{0.5f, 0.0f, -0.1f, 1.0f, gridColor},
+			{0.5f, 0.0f, -0.2f, 1.0f, gridColor},
+			{0.5f, 0.0f, -0.3f, 1.0f, gridColor},
+			{0.5f, 0.0f, -0.4f, 1.0f, gridColor},
+			{0.5f, 0.0f, -0.5f, 1.0f, gridColor}};
 	Vertex topVertices[11] =
-	{
-		{ 0.5f, 0.0f, 0.5f, 1.0f, gridColor},
-		{ 0.4f, 0.0f, 0.5f, 1.0f, gridColor},
-		{ 0.3f, 0.0f, 0.5f, 1.0f, gridColor},
-		{ 0.2f, 0.0f, 0.5f, 1.0f, gridColor},
-		{ 0.1f, 0.0f, 0.5f, 1.0f, gridColor},
-		{ 0.0f, 0.0f, 0.5f, 1.0f, gridColor},
-		{-0.1f, 0.0f, 0.5f, 1.0f, gridColor},
-		{-0.2f, 0.0f, 0.5f, 1.0f, gridColor},
-		{-0.3f, 0.0f, 0.5f, 1.0f, gridColor},
-		{-0.4f, 0.0f, 0.5f, 1.0f, gridColor},
-		{-0.5f, 0.0f, 0.5f, 1.0f, gridColor}
-	};
+		{
+			{0.5f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.4f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.3f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.2f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.1f, 0.0f, 0.5f, 1.0f, gridColor},
+			{0.0f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.1f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.2f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.3f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.4f, 0.0f, 0.5f, 1.0f, gridColor},
+			{-0.5f, 0.0f, 0.5f, 1.0f, gridColor}};
 	Vertex bottomVertices[11] =
-	{
-		{ 0.5f, 0.0f, -0.5f, 1.0f, gridColor},
-		{ 0.4f, 0.0f, -0.5f, 1.0f, gridColor},
-		{ 0.3f, 0.0f, -0.5f, 1.0f, gridColor},
-		{ 0.2f, 0.0f, -0.5f, 1.0f, gridColor},
-		{ 0.1f, 0.0f, -0.5f, 1.0f, gridColor},
-		{ 0.0f, 0.0f, -0.5f, 1.0f, gridColor},
-		{-0.1f, 0.0f, -0.5f, 1.0f, gridColor},
-		{-0.2f, 0.0f, -0.5f, 1.0f, gridColor},
-		{-0.3f, 0.0f, -0.5f, 1.0f, gridColor},
-		{-0.4f, 0.0f, -0.5f, 1.0f, gridColor},
-		{-0.5f, 0.0f, -0.5f, 1.0f, gridColor}
-	};
-	Vertex cube[8] = 
-	{
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor},
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor},
+		{
+			{0.5f, 0.0f, -0.5f, 1.0f, gridColor},
+			{0.4f, 0.0f, -0.5f, 1.0f, gridColor},
+			{0.3f, 0.0f, -0.5f, 1.0f, gridColor},
+			{0.2f, 0.0f, -0.5f, 1.0f, gridColor},
+			{0.1f, 0.0f, -0.5f, 1.0f, gridColor},
+			{0.0f, 0.0f, -0.5f, 1.0f, gridColor},
+			{-0.1f, 0.0f, -0.5f, 1.0f, gridColor},
+			{-0.2f, 0.0f, -0.5f, 1.0f, gridColor},
+			{-0.3f, 0.0f, -0.5f, 1.0f, gridColor},
+			{-0.4f, 0.0f, -0.5f, 1.0f, gridColor},
+			{-0.5f, 0.0f, -0.5f, 1.0f, gridColor}};
+	Vertex cube[8] =
+		{
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor},
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor},
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor},
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor},
 
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor},
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor},
-	};
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor},
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor},
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor},
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor},
+		};
 	Vertex cube1[8] =
-	{
-		{-0.25f, 0.5f, -0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.5f, -0.25, 1.0f, cubeColor},
-		{-0.25f, 0.0f, -0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.0f, -0.25, 1.0f, cubeColor},
+		{
+			{-0.25f, 0.5f, -0.25, 1.0f, cubeColor},
+			{0.25f, 0.5f, -0.25, 1.0f, cubeColor},
+			{-0.25f, 0.0f, -0.25, 1.0f, cubeColor},
+			{0.25f, 0.0f, -0.25, 1.0f, cubeColor},
 
-		{-0.25f, 0.5f, 0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.5f, 0.25, 1.0f, cubeColor},
-		{-0.25f, 0.0f, 0.25, 1.0f, cubeColor},
-		{ 0.25f, 0.0f, 0.25, 1.0f, cubeColor},
-	};
+			{-0.25f, 0.5f, 0.25, 1.0f, cubeColor},
+			{0.25f, 0.5f, 0.25, 1.0f, cubeColor},
+			{-0.25f, 0.0f, 0.25, 1.0f, cubeColor},
+			{0.25f, 0.0f, 0.25, 1.0f, cubeColor},
+		};
 	Matrix4x4 gridMatrix = Matrix_Identity();
 	Matrix4x4 cubeMatrix = Matrix_Create_Translation(0.0f, 0.0f, 0.0f);
 	Matrix4x4 cube1Matrix = Matrix_Matrix_Multiply(Matrix_Create_Translation(1.5f, 0.5f, 1.5f), Matrix_Create_Scale(0.3f, 0.3f, 0.3f));
 	Camera.FOV = 90.0f;
-	Camera.AspectRatio = (float) Width / (float) Height;
+	Camera.AspectRatio = (float)Width / (float)Height;
 
 	XTime XTime;
 	XTime.Restart();
@@ -180,7 +176,7 @@ int main(int argc, char** argv)
 			cube1Matrix = Matrix_Matrix_Multiply(Matrix_Create_Translation(1.5f, 0.5f, 1.5f), Matrix_Create_Scale(0.3f, 0.3f, 0.3f));
 			cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
 			cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, cubeMatrix);
-			cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix,Matrix_Create_Rotation_Y(angle));
+			cube1Matrix = Matrix_Matrix_Multiply(cube1Matrix, Matrix_Create_Rotation_Y(angle));
 			// Shrubbery 2
 			if (GetAsyncKeyState('1') & 0x1)
 			{

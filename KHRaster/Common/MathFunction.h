@@ -20,40 +20,33 @@ float LinearInterpolation(float Src, float Dst, float Ratio)
 	return (Dst - Src) * Ratio + Src;
 }
 
-Vec2 LinearInterpolation(const Vec2& Src, const Vec2& Dst, float Ratio)
+Vec2 LinearInterpolation(const Vec2 &Src, const Vec2 &Dst, float Ratio)
 {
-	return
-	{
+	return {
 		LinearInterpolation(Src.x, Dst.x, Ratio),
-		LinearInterpolation(Src.y, Dst.y, Ratio)
-	};
+		LinearInterpolation(Src.y, Dst.y, Ratio)};
 }
 
-Vec3 LinearInterpolation(const Vec3& Src, const Vec3& Dst, float Ratio)
+Vec3 LinearInterpolation(const Vec3 &Src, const Vec3 &Dst, float Ratio)
 {
-	return
-	{
+	return {
 		LinearInterpolation(Src.x, Dst.x, Ratio),
 		LinearInterpolation(Src.y, Dst.y, Ratio),
-		LinearInterpolation(Src.z, Dst.z, Ratio)
-	};
+		LinearInterpolation(Src.z, Dst.z, Ratio)};
 }
 
-Vec4 LinearInterpolation(const Vec4& Src, const Vec4& Dst, float Ratio)
+Vec4 LinearInterpolation(const Vec4 &Src, const Vec4 &Dst, float Ratio)
 {
-	return
-	{
+	return {
 		LinearInterpolation(Src.x, Dst.x, Ratio),
 		LinearInterpolation(Src.y, Dst.y, Ratio),
 		LinearInterpolation(Src.z, Dst.z, Ratio),
-		LinearInterpolation(Src.w, Dst.w, Ratio)
-	};
+		LinearInterpolation(Src.w, Dst.w, Ratio)};
 }
 
-Vertex LinearInterpolation(const Vertex& Src, const Vertex& Dst, float Ratio)
+Vertex LinearInterpolation(const Vertex &Src, const Vertex &Dst, float Ratio)
 {
-	return
-	{
+	return {
 		LinearInterpolation(Src.position, Dst.position, Ratio),
 		(unsigned int)LinearInterpolation(Src.color, Dst.color, Ratio),
 		LinearInterpolation(Src.uv, Dst.uv, Ratio),
@@ -61,45 +54,38 @@ Vertex LinearInterpolation(const Vertex& Src, const Vertex& Dst, float Ratio)
 	};
 }
 
-float BarycentricInterpolation(float a, float b, float c, const Vec3& barycentrics)
+float BarycentricInterpolation(float a, float b, float c, const Vec3 &barycentrics)
 {
 	return a * barycentrics.x + b * barycentrics.y + c * barycentrics.z;
 }
 
-Vec2 BarycentricInterpolation(const Vec2& a, const Vec2& b, const Vec2& c, const Vec3& barycentrics)
+Vec2 BarycentricInterpolation(const Vec2 &a, const Vec2 &b, const Vec2 &c, const Vec3 &barycentrics)
 {
-	return
-	{
+	return {
 		BarycentricInterpolation(a.x, b.x, c.x, barycentrics),
-		BarycentricInterpolation(a.y, b.y, c.y, barycentrics)
-	};
+		BarycentricInterpolation(a.y, b.y, c.y, barycentrics)};
 }
 
-Vec3 BarycentricInterpolation(const Vec3& a, const Vec3& b, const Vec3& c, const Vec3& barycentrics)
+Vec3 BarycentricInterpolation(const Vec3 &a, const Vec3 &b, const Vec3 &c, const Vec3 &barycentrics)
 {
-	return
-	{
+	return {
 		BarycentricInterpolation(a.x, b.x, c.x, barycentrics),
 		BarycentricInterpolation(a.y, b.y, c.y, barycentrics),
-		BarycentricInterpolation(a.z, b.z, c.z, barycentrics)
-	};
+		BarycentricInterpolation(a.z, b.z, c.z, barycentrics)};
 }
 
-Vec4 BarycentricInterpolation(const Vec4& a, const Vec4& b, const Vec4& c, const Vec3& barycentrics)
+Vec4 BarycentricInterpolation(const Vec4 &a, const Vec4 &b, const Vec4 &c, const Vec3 &barycentrics)
 {
-	return
-	{
+	return {
 		BarycentricInterpolation(a.x, b.x, c.x, barycentrics),
 		BarycentricInterpolation(a.y, b.y, c.y, barycentrics),
 		BarycentricInterpolation(a.z, b.z, c.z, barycentrics),
-		BarycentricInterpolation(a.w, b.w, c.w, barycentrics)
-	};
+		BarycentricInterpolation(a.w, b.w, c.w, barycentrics)};
 }
 
-Vertex BarycentricInterpolation(const Vertex& V0, const Vertex& V1, const Vertex& V2, const Vec3& barycentrics)
+Vertex BarycentricInterpolation(const Vertex &V0, const Vertex &V1, const Vertex &V2, const Vec3 &barycentrics)
 {
-	return
-	{
+	return {
 		BarycentricInterpolation(V0.position, V1.position, V2.position, barycentrics),
 		(unsigned int)BarycentricInterpolation(V0.color, V1.color, V2.color, barycentrics),
 		BarycentricInterpolation(V0.uv, V1.uv, V2.uv, barycentrics),
@@ -128,16 +114,16 @@ Vec3 BarycentricCoordinates(Vec4 a, Vec4 b, Vec4 c, Vec4 p)
 	float subB = ImplicitLineEquation(a, c, p);
 	float subA = ImplicitLineEquation(c, b, p);
 
-	return { subA / maxA, subB / maxB, subC / maxC };
+	return {subA / maxA, subB / maxB, subC / maxC};
 }
 
-void NDCToRaster(Vec4& NDC, unsigned int Width, unsigned int Height)
+void NDCToRaster(Vec4 &NDC, unsigned int Width, unsigned int Height)
 {
 	NDC.x = (NDC.x + 1.0f) * (Width >> 1);
 	NDC.y = (1.0f - NDC.y) * (Height >> 1);
 }
 
-void PerspectiveDivide(Vec4& position)
+void PerspectiveDivide(Vec4 &position)
 {
 	if (position.w != 0.0f)
 	{

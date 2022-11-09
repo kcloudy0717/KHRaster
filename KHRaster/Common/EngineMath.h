@@ -3,15 +3,15 @@
 #include <cmath>
 
 // Pie is not round, pie are squared :)
-#define PI		3.14159f
+#define PI 3.14159f
 
 // Roundoff error to be ignored in floating point number comparisons
 #define EPSILON 0.00001f
 
 /**
-* Structure represents a
-* vector with 4 components
-*/
+ * Structure represents a
+ * vector with 4 components
+ */
 union Vec2
 {
 	float e[2];
@@ -45,16 +45,16 @@ union Vec4
 };
 
 /**
-* Constant world axis
-*/
-const Vec4 gc_xAxis = { 1.0f, 0.0f, 0.0f, 0.0f };
-const Vec4 gc_yAxis = { 0.0f, 1.0f, 0.0f, 0.0f };
-const Vec4 gc_zAxis = { 0.0f, 0.0f, 1.0f, 0.0f };
+ * Constant world axis
+ */
+const Vec4 gc_xAxis = {1.0f, 0.0f, 0.0f, 0.0f};
+const Vec4 gc_yAxis = {0.0f, 1.0f, 0.0f, 0.0f};
+const Vec4 gc_zAxis = {0.0f, 0.0f, 1.0f, 0.0f};
 
 /**
-* Structure represents a 4x4 matrix
-* row major.
-*/
+ * Structure represents a 4x4 matrix
+ * row major.
+ */
 typedef union Matrix4x4
 {
 	// NOTE - first 4 are _e11 - _e14
@@ -94,7 +94,7 @@ float Radians_To_Degrees(float Rad);
 // Vector Functions
 //////////////////////////////////////////////////////////////////////////
 
-bool    Vector_IsEqual(Vec4 v, Vec4 w);
+bool Vector_IsEqual(Vec4 v, Vec4 w);
 
 Vec4 Vector_Add(Vec4 v, Vec4 w);
 
@@ -104,13 +104,13 @@ Vec4 Vector_Scalar_Multiply(Vec4 v, float s);
 
 Vec4 Vector_Negate(Vec4 v);
 
-float   Vector_Dot(Vec4 v, Vec4 w);
+float Vector_Dot(Vec4 v, Vec4 w);
 
 Vec4 Vector_Cross(Vec4 v, Vec4 w);
 
-float   Vector_LengthSq(Vec4 v);
+float Vector_LengthSq(Vec4 v);
 
-float   Vector_Length(Vec4 v);
+float Vector_Length(Vec4 v);
 
 Vec4 Vector_Normalize(Vec4 v);
 
@@ -122,9 +122,9 @@ Vec4 Vector_Minimize(Vec4 v, Vec4 w);
 
 Vec4 Vector_Average(Vec4 v, Vec4 w);
 
-float   Vector_AngleBetween(Vec4 v, Vec4 w);
+float Vector_AngleBetween(Vec4 v, Vec4 w);
 
-float   Vector_Component(Vec4 v, Vec4 w);
+float Vector_Component(Vec4 v, Vec4 w);
 
 Vec4 Vector_Project(Vec4 v, Vec4 w);
 
@@ -164,6 +164,6 @@ Vec4 Matrix_Vector_Multiply(Matrix4x4 m, Vec4 v);
 
 Matrix4x4 Matrix_Matrix_Multiply(Matrix4x4 m, Matrix4x4 n);
 
-float   Matrix_Determinant(Matrix4x4 m);
+float Matrix_Determinant(Matrix4x4 m);
 
 Matrix4x4 Matrix_Inverse(Matrix4x4 m);
